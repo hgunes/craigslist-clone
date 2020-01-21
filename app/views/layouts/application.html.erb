@@ -13,8 +13,8 @@
     <div class="main">
       <div class="main-left">
       <p>Craig's List clone</p>
-
-      <%= link_to 'New post', new_post_path %>
+      <%= render 'categories/category_sidebar' if controller.controller_name == 'categories' %>
+      <%= link_to 'New post', new_post_path if controller.controller_name == 'public' %>
       </div>
       <div class="main-right">
         <%= yield %>

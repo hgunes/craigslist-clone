@@ -4,3 +4,7 @@
     <span class="post-title"><%= link_to post.title, post_path(post) %></span>
   </div>
 <% end %>
+
+<% if @posts.empty? %>
+  <p>No post to display</p>
+<% end %>

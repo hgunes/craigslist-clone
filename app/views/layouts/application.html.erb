@@ -10,11 +10,18 @@
   </head>
 
   <body>
+    <div class="header">
+      <%= render 'layouts/breadcrumb_nav' %>
+    </div>
+    <p class="notice"><%= notice %></p>
     <div class="main">
       <div class="main-left">
-      <p>Craig's List clone</p>
+      <p><strong><%= link_to "Craig's List clone", root_path %></strong></p>
+
+
       <%= render 'categories/category_sidebar' if controller.controller_name == 'categories' %>
-      <%= link_to 'New post', new_post_path if controller.controller_name == 'public' %>
+      <%= link_to 'New post', new_post_path if controller.controller_name == 'public' %><br />
+      <%= link_to 'My account', new_account_session_path unless account_signed_in? %>
       </div>
       <div class="main-right">
         <%= yield %>

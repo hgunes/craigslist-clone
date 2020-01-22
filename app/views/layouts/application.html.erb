@@ -16,12 +16,20 @@
     <p class="notice"><%= notice %></p>
     <div class="main">
       <div class="main-left">
-      <p><strong><%= link_to "Craig's List clone", root_path %></strong></p>
+        <p><strong><%= link_to "Craig's List clone", root_path %></strong></p>
 
+        <%= link_to 'New post', new_post_path if controller.controller_name == 'public' %><br />
+        <%= link_to 'My account', new_account_session_path unless account_signed_in? %>
+        <%= render 'categories/category_sidebar' if controller.controller_name == 'categories' %>
 
-      <%= render 'categories/category_sidebar' if controller.controller_name == 'categories' %>
-      <%= link_to 'New post', new_post_path if controller.controller_name == 'public' %><br />
-      <%= link_to 'My account', new_account_session_path unless account_signed_in? %>
+        <% if is_home? %>
+        <div class="nav-pages">
+          <p><%= link_to 'help, faqs, abuse, legal', faqs_path %></p>
+          <p><%= link_to 'avoid scams and fraud', scams_path %></p>
+          <p><%= link_to 'personal safety tips', safety_path %></p>
+          <p><%= link_to 'terms of use', terms_path %></p>
+        </div>
+        <% end %>
       </div>
       <div class="main-right">
         <%= yield %>

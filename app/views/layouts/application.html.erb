@@ -15,7 +15,9 @@
       <%= render 'layouts/breadcrumb_nav' %>
     </div>
     <div class="container">
-    <p class="text-center notice"><%= notice %></p>
+    <% if notice %>
+      <p class="text-center notice"><%= notice %></p>
+    <% end %>
       <div class="row">
         <div class="col-3">
           <p><strong><%= link_to "Craig's List clone", root_path, class: 'text-dark' %></strong></p>

@@ -19,9 +19,11 @@
       <% end %>
         <%= link_to category.name, category_path(category), class: 'text-dark' %> >>
         <%= @post.title %>
-      <% elsif @category.present? %>
+      <% elsif @category.present? 
+        parent = @category.parent
+      %>
         <% if parent.present? %>
-          <%= link_to parent.name, category_path(parent), class: 'text-dark' %>
+          <%= link_to parent.name, category_path(parent), class: 'text-dark' %> >> 
         <% end %>
 
         <%= @category.name %>

@@ -7,24 +7,24 @@
 
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_pack_tag 'application' %>
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+SC&display=swap" rel="stylesheet">
   </head>
 
   <body>
     <div class="header">
       <%= render 'layouts/breadcrumb_nav' %>
     </div>
-    <p class="notice"><%= notice %></p>
     <div class="container">
+    <div id="notice"><%= notice %></div>
       <div class="row">
         <div class="col-3">
-          <p><strong><%= link_to "Craig's List clone", root_path %></strong></p>
+          <p><strong><%= link_to "Craig's List clone", root_path, class: 'text-dark' %></strong></p>
 
-          <%= link_to 'New post', new_post_path if controller.controller_name == 'public' %><br />
-          <%= link_to 'My account', new_account_session_path unless account_signed_in? %>
+          <%= link_to 'New post', new_post_path, class: 'btn btn-success' unless is_auth? %><br />
           <%= render 'categories/category_sidebar' if controller.controller_name == 'categories' %>
 
-          <% if is_home? %>
-          <div class="nav-pages">
+          <% if is_home? || is_auth? %>
+          <div class="nav-pages pt-4">
             <p><%= link_to 'help, faqs, abuse, legal', faqs_path %></p>
             <p><%= link_to 'avoid scams and fraud', scams_path %></p>
             <p><%= link_to 'personal safety tips', safety_path %></p>

@@ -3,15 +3,20 @@ module ApplicationHelper
     controller.controller_name == 'public' && controller.action_name == 'home'
   end
 
-  def faqs
+  def is_auth?
+    controller.controller_name == 'sessions' || controller.controller_name == 'registrations'
   end
 
-  def scams
-  end
+  # def flash_notifications
+  #   flash_messages = []
 
-  def terms
-  end
+  #   flash.each do |type, msg|
+  #     type = 'success' if type == 'notice'
+  #     type = 'error' if type == 'alert' || type == 'danger'
+  #     text = "toastr['#{type}']('#{msg}');"
+  #     flash_messages << text.html_safe unless msg.blank?
+  #   end
 
-  def safety
-  end
+  #   "<script>$(function() { #{ flash_messages.join("\n")} } );</script>"
+  # end
 end

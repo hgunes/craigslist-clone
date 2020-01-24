@@ -11,17 +11,16 @@
   </head>
 
   <body>
-    <div class="header">
-      <%= render 'layouts/breadcrumb_nav' %>
-    </div>
-    <div class="container">
+    <div class="container mt-3">
     <% if notice %>
       <p class="text-center notice"><%= notice %></p>
     <% end %>
       <div class="row">
         <div class="col-3">
-          <p><strong><%= link_to "Craig's List clone", root_path, class: 'text-dark' %></strong></p>
-
+          <%= link_to  root_path, class: 'text-dark' do %>
+            <%= image_tag 'logo.png', width: '200px', class: 'mb-5' %>
+          <h4>Craig's List Clone</h4>
+          <% end %><br />
           <%= link_to 'New post', new_post_path, class: 'btn btn-success' unless is_auth? %><br />
           <%= render 'categories/category_sidebar' if controller.controller_name == 'categories' %>
 
@@ -35,6 +34,9 @@
           <% end %>
         </div>
         <div class="col-9">
+          <div class="header">
+            <%= render 'layouts/breadcrumb_nav' %>
+          </div>
           <%= yield %>
         </div>
       </div>

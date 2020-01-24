@@ -23,7 +23,7 @@
         parent = @category.parent
       %>
         <% if parent.present? %>
-          <%= link_to parent.name, category_path(parent), class: 'text-dark' %> >> 
+          <%= link_to parent.name, category_path(parent), class: 'text-dark' %> >>
         <% end %>
 
         <%= @category.name %>

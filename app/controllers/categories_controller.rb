@@ -12,7 +12,7 @@ class CategoriesController < ApplicationController
   def show
     category_ids = @category.subcategories.ids
     category_ids << @category.id
-    @posts = Post.where(category_id: category_ids)
+    @posts = Post.where(category_id: category_ids).order('created_at DESC')
   end
 
   # GET /categories/new
